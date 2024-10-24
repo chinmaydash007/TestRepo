@@ -42,7 +42,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(files("visit-debug.aar"))
+
+    implementation("com.twilio:video-android:7.1.2")
+    implementation("com.twilio:audioswitch:1.1.5")
 }
