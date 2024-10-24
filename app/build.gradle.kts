@@ -7,6 +7,8 @@ android {
     namespace = "com.example.testapplication"
     compileSdk = 34
 
+
+
     defaultConfig {
         applicationId = "com.example.testapplication"
         minSdk = 24
@@ -17,15 +19,29 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("config") {
+            keyAlias = "TEST"
+            keyPassword = "QWERTY1234"
+            storeFile = file("/Users/chinmaydash/AndroidStudioProjects/TestApplication/keystore.jks")
+            storePassword = "QWERTY1234"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            signingConfig = signingConfigs.getByName("config")
         }
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
